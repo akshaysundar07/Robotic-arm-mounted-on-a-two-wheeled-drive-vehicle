@@ -1,6 +1,3 @@
-# Save the provided markdown content to a .md file
-
-markdown_content = """
 # Robotic Rover Control System
 
 This repository contains the source code for a robotic rover equipped with a 4-DOF robotic arm and a claw end effector, controlled via a web interface. The system uses a Raspberry Pi, L298N motor drivers for the 4-wheeled base, PCA9685 for servo control, and ADXL345 for vibration analysis. It includes predictive maintenance features based on motor current signal analysis.
