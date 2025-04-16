@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+env3/
+.venv/
+.env
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Flask
+instance/
+*.sqlite
+*.db
+
+# Raspberry Pi
+*.log
+*.bin
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Virtual environments
+env/
+venv/
+
+# Ignore hardware-specific files (if any)
+*.hex
+*.elf
