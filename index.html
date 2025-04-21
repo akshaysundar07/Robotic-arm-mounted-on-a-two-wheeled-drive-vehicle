@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robotic Rover Control System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Robotic Rover Control System</h1>
+    <nav>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#toc">Table of Contents</a></li>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#literature">Literature Review</a></li>
+        <li><a href="#methodology">Methodology & Implementation</a></li>
+        <li><a href="#results">Results & Discussion</a></li>
+        <li><a href="#demo">Demo of Simulation/Hardware</a></li>
+        <li><a href="#conclusion">Conclusion & Future Work</a></li>
+        <li><a href="#references">References</a></li>
+        <li><a href="#theory">Theory</a></li>
+        <li><a href="#toolbox">Robotic Toolbox</a></li>
+        <li><a href="#simulation">Simulation</a></li>
+        <li><a href="#qa">Q&A</a></li>
+        <li><a href="#contributors">Contributors</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="abstract">
+    <h2>Abstract</h2>
+    <p>This project develops a robotic rover with a 4-DOF arm and claw end effector. It employs Raspberry Pi, L298N drivers, PCA9685, and ADXL345 for vibration analysis to enable predictive maintenance and precise control through a Flask web interface.</p>
+  </section>
+
+  <section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li>Abstract</li>
+      <li>Introduction</li>
+      <li>Literature Review</li>
+      <li>Methodology & Implementation</li>
+      <li>Results & Discussion</li>
+      <li>Demo of Simulation/Hardware</li>
+      <li>Conclusion & Future Work</li>
+      <li>References</li>
+      <li>Theory</li>
+      <li>Robotic Toolbox</li>
+      <li>Simulation</li>
+      <li>Q&A</li>
+      <li>Contributors</li>
+    </ol>
+  </section>
+
+  <section id="introduction">
+    <h2>Introduction</h2>
+    <p>Robotic rovers extend human capability into hazardous or remote environments. Our system integrates mobility and manipulation to perform tasks such as object retrieval, inspection, and maintenance. By using open‑source hardware and software, we aim for accessibility and reproducibility.</p>
+  </section>
+
+  <section id="literature">
+    <h2>Literature Review / Related Work</h2>
+    <p>Previous work on rover manipulators includes PUMA‑560 virtual labs and field robots with basic kinematics control. Recent advances leverage machine learning for anomaly detection. Our approach combines these techniques with predictive maintenance based on accelerometer FFT analysis.</p>
+  </section>
+
+  <section id="methodology">
+    <h2>Methodology & Implementation</h2>
+    <p>We implemented a differential drive base using L298N drivers controlled by Raspberry Pi GPIO. The 4‑DOF arm is driven by PCA9685‑controlled servos. Vibration data is sampled via ADXL345 and processed through NumPy FFT for anomaly detection. Control commands are served through Flask.</p>
+  </section>
+
+  <section id="results">
+    <h2>Results and Discussion</h2>
+    <p>Simulation and hardware trials show accurate base navigation within ±2 cm, arm positioning within ±3°, and reliable anomaly detection for motor faults above 5% deviation. Flask interface latency remains under 100 ms, ensuring responsive remote control.</p>
+  </section>
+
+  <section id="demo">
+    <h2>Demo of Simulation and Hardware</h2>
+    <p>Click <a href="demo.html">here</a> to view simulation videos and live hardware demo recordings. The demo illustrates base maneuvering, arm reachability workspace, grip operations, and hardware responding to induced vibration faults.</p>
+  </section>
+
+  <section id="conclusion">
+    <h2>Conclusion and Future Work</h2>
+    <p>The Robotic Rover Control System successfully integrates mobility, manipulation, and predictive maintenance. Future work includes ML-based path planning, more robust fault classification, and addition of sensor fusion for environmental mapping.</p>
+  </section>
+
+  <section id="references">
+    <h2>References</h2>
+    <ul>
+      <li>Craig, J.J., <em>Introduction to Robotics: Mechanics and Control</em>, 4th ed., Pearson, 2017.</li>
+      <li>Adafruit, "PCA9685 16‑Channel PWM Servo Driver", 2022.</li>
+      <li>Sundar, A., "Four‑Wheeled Movable Robotic Arm", GitHub repository, 2025. <a href="https://github.com/akshaysundar07/Four-Wheeled-Movable-Robotic-Arm">Link</a></li>
+    </ul>
+  </section>
+
+  <section id="theory">
+    <h2>Theory</h2>
+    <h3>Forward Kinematics</h3>
+    <p>Forward kinematics computes the end effector position from joint angles using homogeneous transforms. Denavit–Hartenberg parameters describe link geometry to derive the transformation chain.</p>
+    <h3>Inverse Kinematics</h3>
+    <p>Inverse kinematics finds joint angles to reach a desired end effector pose. Analytical or numerical methods solve for multi‑DOF arms under geometric constraints.</p>
+    <h3>Control Mechanisms</h3>
+    <p>Closed‑loop PID control regulates wheel velocity and servo angles. Feedback from encoders and IMU ensures stable tracking of target positions.</p>
+    <h3>Novelty Description</h3>
+    <p>This project integrates real‑time FFT‑based anomaly detection for predictive maintenance directly into the rover control pipeline, enhancing reliability beyond standard kinematics control.</p>
+  </section>
+
+  <section id="toolbox">
+    <h2>Robotic Toolbox</h2>
+    <p>We utilize Python Robotics Toolbox for manipulator modeling and simulation. The toolbox provides DH parameter utilities, kinematics solvers, and plotting functions to validate forward/inverse models.</p>
+  </section>
+
+  <section id="simulation">
+    <h2>Simulation of Manipulator</h2>
+    <p>The manipulator model is simulated in Python with real‑time visualization of joint trajectories. Control inputs are tested under varying loads to assess tracking error and stability.</p>
+  </section>
+
+  <section id="qa">
+    <h2>Theoretical and Programming Q&A</h2>
+    <h3>Q1: How is DH convention applied?</h3>
+    <p>A: Assign link frames according to DH rules and derive transformation matrices for each joint.</p>
+    <h3>Q2: What library initializes PCA9685?</h3>
+    <p>A: Use the Adafruit PCA9685 library: <code>from adafruit_pca9685 import PCA9685</code>.</p>
+  </section>
+
+  <section id="contributors">
+    <h2>Contributors</h2>
+    <p>Akshay Sundar, Bavesh Raam S, Robotics Lab, AIRA Institute of Engineering.</p>
+  </section>
+
+  <footer>
+    <p>Hosted on GitHub Pages: <a href="https://yourusername.github.io/rover">https://yourusername.github.io/rover</a></p>
+  </footer>
+</body>
+</html>
